@@ -4,10 +4,32 @@
 
 <body>
   <h1>Welcome to Meteor LeaderBoard App...!</h1>
-
+  {{> AddPlayer}}
   {{> LeaderBoard}}
+  {{> ScoreButtons}}
 </body>
 
 <template name="LeaderBoard">
-  Hello,World!.
+	<ul>
+		{{#each players}}
+			<li class="player {{selectedPlayer}}">{{name}}:{{score}}</li>
+		{{else}}
+			<li>No players</li>
+		{{/each}}
+	</ul>
+	<div>
+		Selected Player : {{#if selectedPlayerName}}{{selectedPlayerName}}{{else}}none{{/if}}		
+	</div>
+</template>
+
+<template name="AddPlayer">
+	<form name="addPlayer">
+		<input type="text" placeholder='PlayerName'>
+		<input type="submit" value="Add">
+	</form>
+</template>
+
+<template name="ScoreButtons">
+	<button class="increment">Give 5 Points</button>
+	<button class="decrement">Take 5 Points</button>
 </template>
