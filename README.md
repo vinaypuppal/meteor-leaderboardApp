@@ -7,11 +7,8 @@
 - You can increment a selected player’s score.
 - You can increment a selected player’s score.
 
-###ScreenShots:-
-.. image:: https://www.lorempixel.com/100/200
-   :height: 100px
-   :width: 200 px
-   :scale: 50 %
+###ScreenShots:-(Dummy Image)
+![alt tag](http://www.lorempixel.com/100/200)
 
 ###Demo:-
 https://leaderboard.vinaypuppal.com
