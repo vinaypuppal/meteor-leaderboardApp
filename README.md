@@ -7,5 +7,12 @@
 - You can increment a selected player’s score.
 - You can increment a selected player’s score.
 
+###ScreenShots:-
+.. image:: https://www.lorempixel.com/100/200
+   :height: 100px
+   :width: 200 px
+   :scale: 50 %
+
 ###Demo:-
 https://leaderboard.vinaypuppal.com
+
