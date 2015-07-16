@@ -4,4 +4,8 @@
 - Each player has a score.
 - Players are ranked by their score.
 - You can select players by clicking on them.
+<<<<<<< HEAD
 - You can increment a selected player’s score.
+=======
+- You can increment a selected player’s score.
+>>>>>>> a153e80dbe962da3bdc09a1e5dc5e5d54caadd6e
