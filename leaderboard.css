@@ -71,7 +71,7 @@ span.text-orange{
 	margin-bottom: 0;
 }
 .panel-body{
-	max-height: 420px;
+	max-height: 400px;
 	-ms-overflow-y: auto;
 	    overflow-y: auto;
 }

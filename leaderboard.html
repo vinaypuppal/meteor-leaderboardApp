@@ -20,9 +20,11 @@
   		<div class="panel-body">
   		   {{> LeaderBoard}}
   		</div>
+  		{{#if currentUser}}
   		<div class="panel-footer">
   			{{> ScoreButtons}}
   		</div>
+  		{{/if}}
   	</div>
   	<footer>
   		<h5 class="text-center">VinayPuppal&copy;2015</h5>
