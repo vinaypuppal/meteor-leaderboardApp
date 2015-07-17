@@ -9,3 +9,5 @@ autopublish
 insecure
 twbs:bootstrap
 reactive-var
+ian:accounts-ui-bootstrap-3
+accounts-password

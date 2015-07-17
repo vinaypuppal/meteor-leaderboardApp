@@ -1,9 +1,13 @@
 PlayersList = new Mongo.Collection('playerslist');
 if (Meteor.isClient) {
+  Accounts.ui.config({
+    passwordSignupFields:'USERNAME_ONLY'
+  });
   var selectedPlayer = new ReactiveVar('');
   Template.LeaderBoard.helpers({
     players:function(){
-      return PlayersList.find({},{sort:{score:-1,name:1}});
+      var currentUserId = Meteor.userId();
+      return PlayersList.find({userId:currentUserId},{sort:{score:-1,name:1}});
     },
     selectedPlayer:function(){
       var playerId=this._id;
@@ -24,10 +28,12 @@ if (Meteor.isClient) {
     'submit form[name=addPlayer]':function(e,t){
       e.preventDefault();
       var playerName=t.find('input[type=text]').value;
+      var currentUserId = Meteor.userId();
       if(playerName !== ''){
         PlayersList.insert({
           name:playerName,
           score:0,
+          userId:currentUserId,
           createdAt:new Date
         });
       }
@@ -66,15 +72,15 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
-    if(PlayersList.find({}).count() === 0){
-      var names = ['VinayPuppal','UtkarshShukla','MounishRaja','Prabhat','Aizan'];
-      for(var i=0;i<names.length;i++){
-          PlayersList.insert({
-            name:names[i],
-            score:0,
-            createdAt:new Date
-          });
-      }
-    }
+    // if(PlayersList.find({}).count() === 0){
+    //   var names = ['VinayPuppal','UtkarshShukla','MounishRaja','Prabhat','Aizan'];
+    //   for(var i=0;i<names.length;i++){
+    //       PlayersList.insert({
+    //         name:names[i],
+    //         score:0,
+    //         createdAt:new Date
+    //       });
+    //   }
+    // }
   });
 }

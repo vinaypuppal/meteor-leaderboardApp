@@ -12,6 +12,16 @@ h1,h5{
 	width: 60%;
 	margin: auto;
 }
+.login-btn{
+	float: right;
+	padding: 5px;
+}
+.login-btn li{
+	list-style:none;
+}
+.login-btn a.dropdown-toggle{
+	color: #FFF;
+}
 .player{
 	cursor: pointer;
 	padding: 10px;
@@ -61,7 +71,7 @@ span.text-orange{
 	margin-bottom: 0;
 }
 .panel-body{
-	max-height: 430px;
+	max-height: 420px;
 	-ms-overflow-y: auto;
 	    overflow-y: auto;
 }
@@ -101,6 +111,11 @@ span.text-orange{
 	}
 	h5{
 		margin: 0;
+	}
+	.login-btn{
+		background: #ccc;
+		text-align: center;
+		float: none;
 	}
 	.increment,.decrement,.delete{
 		font-size: 10px;

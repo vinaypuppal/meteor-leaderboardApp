@@ -8,6 +8,11 @@
   	<header>
   		<h1>Welcome to LeaderBoard App...!</h1>  		
   	</header>
+  	<div class="row">
+  		<div class="login-btn">
+  			{{>loginButtons}}
+  		</div>
+  	</div>
   	<div class="panel panel-default">
   		<div class="panel-heading">
   			{{> AddPlayer}}
@@ -53,7 +58,11 @@
 
 <template name="AddPlayer">
 	<form name="addPlayer">
+		{{#if currentUser}}
 		<input type="text" class="form-control" placeholder='Enter PlayerName'>
+		{{else}}
+		<input type="text" class="form-control" placeholder='SignIn to create Your LeaderBoard' readonly>
+		{{/if}}
 	</form>
 </template>
 
