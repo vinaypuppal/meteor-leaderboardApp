@@ -7,9 +7,24 @@
 - You can increment a selected player’s score.
 - You can increment a selected player’s score.
 
-###ScreenShots:-(Dummy Image)
-![alt tag](http://www.lorempixel.com/100/200)
+###ScreenShots:-
+#####For Desktop:
+######SignIn Page:
+![alt tag](https://raw.githubusercontent.com/vinaypuppal/meteor-leaderboardApp/leaderboards/ScreenShots/leaderboards-signin.png)
+######SignIn Dropdown:
+![alt tag](https://raw.githubusercontent.com/vinaypuppal/meteor-leaderboardApp/leaderboards/ScreenShots/leaderboards-sigin-dropdown.png)
+######Leaderboards Page:
+![alt tag](https://raw.githubusercontent.com/vinaypuppal/meteor-leaderboardApp/leaderboards/ScreenShots/leaderboards-loading.png)
+![alt tag](https://raw.githubusercontent.com/vinaypuppal/meteor-leaderboardApp/leaderboards/ScreenShots/leaderboards.png)
+
+#####For Mobile:
+######SignIn Page:
+![alt tag](https://raw.githubusercontent.com/vinaypuppal/meteor-leaderboardApp/leaderboards/ScreenShots/m-leaderboards-signin.png)
+######SignIn Dropdown:
+![alt tag](https://raw.githubusercontent.com/vinaypuppal/meteor-leaderboardApp/leaderboards/ScreenShots/m-leaderboards-sigin-dropdown.png)
+######Leaderboards Page:
+![alt tag](https://raw.githubusercontent.com/vinaypuppal/meteor-leaderboardApp/leaderboards/ScreenShots/m-leaderboards.png)
 
 ###Demo:-
-https://leaderboard.vinaypuppal.com
+https://leaderboards.vinaypuppal.com
 
