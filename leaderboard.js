@@ -11,7 +11,9 @@ if (Meteor.isClient) {
       return playerId === selectedId ? 'selected' : '';
     }
   });
-
+  Template.LeaderBoard.onCreated(function () {
+    this.subscribe('playerslist');
+  });
   Template.LeaderBoard.events({
     'click .player': function (e,t) {
         var playerId = this._id;
@@ -64,6 +66,9 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
+  Meteor.publish('playerslist',function(){
+     return PlayersList.find({});
+   });
   Meteor.startup(function () {
     // code to run on server at startup
     if(PlayersList.find({}).count() === 0){

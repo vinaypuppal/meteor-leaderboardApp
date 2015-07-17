@@ -33,20 +33,24 @@
 				<div class="col-lg-4 col-sm-6 col-xs-6">Score</div>
 			</div>
 		</li>
-		{{#each players}}
-			<li class="player {{selectedPlayer}}">
-				<div class="row">
-					<div class="col-lg-4 col-sm-6 col-xs-6">
-						{{name}}
+		{{#if Template.subscriptionsReady}}
+			{{#each players}}
+				<li class="player {{selectedPlayer}}">
+					<div class="row">
+						<div class="col-lg-4 col-sm-6 col-xs-6">
+							{{name}}
+						</div>
+						<div class="col-lg-4 col-sm-6 col-xs-6">
+							{{score}}
+						</div>
 					</div>
-					<div class="col-lg-4 col-sm-6 col-xs-6">
-						{{score}}
-					</div>
-				</div>
-			</li>
+				</li>
+			{{else}}
+				<li>No players</li>
+			{{/each}}
 		{{else}}
-			<li>No players</li>
-		{{/each}}
+			<div class="loading">{{>spinner}}</div>
+		{{/if}}
 	</ul>
 	
 </template>
