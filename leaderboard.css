@@ -1,8 +1,109 @@
 /* CSS declarations go here */
+body{
+	background-color: #55cc55;
+	color: #0aa;
+	font-family: cursive, sans-serif;
+}
+h1,h5{
+	color: #FFF;
+	text-align: center;
+}
+.container{
+	width: 60%;
+	margin: auto;
+}
 .player{
 	cursor: pointer;
+	padding: 10px;
+	font-size: 16px;
 }
 
 .selected{
-	background: #Fccfff;
+	background: #cff;
+	color:#0f1;
 }
+button{
+	padding: 5px;
+}
+button:hover{
+	background: #ccc;
+}
+.increment,.decrement{
+	background: #FFF;
+	color: blue;
+}
+.delete{
+	color: #f00;
+	background: #FFF;
+}
+.list-header{
+	border-bottom: 1px solid grey;
+	padding: 5px;
+	margin-bottom: 10px;
+	color: #09f;
+}
+.score-buttons{
+	display: none;
+}
+span.text-primary{
+	font-size: 16px;
+}
+
+span.text-primary.selected{
+	color: #f90;
+}
+
+span.text-orange{
+	color: #0f1;
+}
+
+.panel{
+	margin-bottom: 0;
+}
+.panel-body{
+	max-height: 430px;
+	-ms-overflow-y: auto;
+	    overflow-y: auto;
+}
+
+@media screen and (max-width:720px){
+	body{
+		padding: 0;
+	}
+	.container{
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		position:absolute;
+		top:0;
+		right:0;
+		bottom:0;
+		left:0;
+	}
+	.panel-body{
+		height: 320px;
+		-ms-overflow-y: scroll;
+	    -webkit-overflow-y:scroll;
+	    -moz-overflow-y:scroll;
+		    overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+		-moz-overflow-scrolling: touch;
+		-ms-overflow-scrolling: touch;        
+		    overflow-scrolling: touch;
+	}
+	header,footer{
+		background: #aaa;
+		padding: 20px;
+	}
+	h1{
+		font-size: 14px;
+		margin: 0;
+	}
+	h5{
+		margin: 0;
+	}
+	.increment,.decrement,.delete{
+		font-size: 10px;
+	}
+}
+

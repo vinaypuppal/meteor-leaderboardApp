@@ -1,24 +1,21 @@
 PlayersList = new Mongo.Collection('playerslist');
 if (Meteor.isClient) {
+  var selectedPlayer = new ReactiveVar('');
   Template.LeaderBoard.helpers({
     players:function(){
       return PlayersList.find({},{sort:{score:-1,name:1}});
     },
     selectedPlayer:function(){
       var playerId=this._id;
-      var selectedId = Session.get('selectedPlayer');
+      var selectedId = selectedPlayer.get();
       return playerId === selectedId ? 'selected' : '';
-    },
-    selectedPlayerName:function(){
-      var selectedId = Session.get('selectedPlayer');
-      return selectedId ? PlayersList.findOne({_id:selectedId}).name : '';
     }
   });
 
   Template.LeaderBoard.events({
     'click .player': function (e,t) {
         var playerId = this._id;
-        Session.set('selectedPlayer', playerId);
+        selectedPlayer.set(playerId);
         console.log(playerId);
     }
   });
@@ -37,16 +34,33 @@ if (Meteor.isClient) {
       t.find('form[name=addPlayer]').reset();
     }
   });
+  Template.ScoreButtons.helpers({
+    selectedPlayerName:function(){
+      var selectedId = selectedPlayer.get();
+      return selectedId ? PlayersList.findOne({_id:selectedId}).name : '';
+    }
+  });
   Template.ScoreButtons.events({
     'click .increment': function (e,t) {
-      var selectedId = Session.get('selectedPlayer');
+      var selectedId = selectedPlayer.get();
       PlayersList.update({_id:selectedId}, {$inc:{score:5}});
     },
     'click .decrement': function (e,t) {
-      var selectedId = Session.get('selectedPlayer');
+      var selectedId = selectedPlayer.get();
       PlayersList.update({_id:selectedId}, {$inc:{score:-5}});
+    },
+    'click .delete':function(){
+      var selectedId = selectedPlayer.get();
+      PlayersList.remove({_id:selectedId});
     }
   });
+  Template.ScoreButtons.rendered = function () {
+    Tracker.autorun(function () {
+      if(selectedPlayer.get()){
+        $('.score-buttons').slideDown('1000');
+      }
+    });
+  };
 }
 
 if (Meteor.isServer) {

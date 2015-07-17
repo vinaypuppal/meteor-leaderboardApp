@@ -1,35 +1,79 @@
 <head>
   <title>leaderboard</title>
+ <meta name="viewport" content="width=device-width,intial-scale=1.0,user-scalable=no,maximum-scale=1, minimum-scale=1">
 </head>
 
 <body>
-  <h1>Welcome to Meteor LeaderBoard App...!</h1>
-  {{> AddPlayer}}
-  {{> LeaderBoard}}
-  {{> ScoreButtons}}
+  <div class="container">
+  	<header>
+  		<h1>Welcome to LeaderBoard App...!</h1>  		
+  	</header>
+  	<div class="panel panel-default">
+  		<div class="panel-heading">
+  			{{> AddPlayer}}
+  		</div>
+  		<div class="panel-body">
+  		   {{> LeaderBoard}}
+  		</div>
+  		<div class="panel-footer">
+  			{{> ScoreButtons}}
+  		</div>
+  	</div>
+  	<footer>
+  		<h5 class="text-center">VinayPuppal&copy;2015</h5>
+  	</footer>
+  </div>
 </body>
 
 <template name="LeaderBoard">
-	<ul>
+	<ul class="list-unstyled">
+		<li class="list-header">
+			<div class="row">
+				<div class="col-lg-4 col-sm-6 col-xs-6">Player Name</div>
+				<div class="col-lg-4 col-sm-6 col-xs-6">Score</div>
+			</div>
+		</li>
 		{{#each players}}
-			<li class="player {{selectedPlayer}}">{{name}}:{{score}}</li>
+			<li class="player {{selectedPlayer}}">
+				<div class="row">
+					<div class="col-lg-4 col-sm-6 col-xs-6">
+						{{name}}
+					</div>
+					<div class="col-lg-4 col-sm-6 col-xs-6">
+						{{score}}
+					</div>
+				</div>
+			</li>
 		{{else}}
 			<li>No players</li>
 		{{/each}}
 	</ul>
-	<div>
-		Selected Player : {{#if selectedPlayerName}}{{selectedPlayerName}}{{else}}none{{/if}}		
-	</div>
+	
 </template>
 
 <template name="AddPlayer">
 	<form name="addPlayer">
-		<input type="text" placeholder='PlayerName'>
-		<input type="submit" value="Add">
+		<input type="text" class="form-control" placeholder='Enter PlayerName'>
 	</form>
 </template>
 
 <template name="ScoreButtons">
-	<button class="increment">Give 5 Points</button>
-	<button class="decrement">Take 5 Points</button>
+	<div class="row">
+		<div class="col-lg-6 col-sm-12 col-xs-12">
+			{{#if selectedPlayerName}}
+				<span class='text-primary'>Selected Player :<span class='text-orange'>{{selectedPlayerName}}</span></span>
+			{{else}}
+				<span class='text-primary'>Click On Player To Select Him</span>
+			{{/if}}			
+		</div>
+		<div class="col-lg-6 col-sm-12 col-xs-12">
+			<div class="pull-right score-buttons">
+				<button class="increment">Give 5 Points</button>
+				<button class="decrement">Take 5 Points</button>
+				<button class="delete">Delete Player</button>		
+			</div>	
+		</div>
+	</div>
 </template>
+
+
