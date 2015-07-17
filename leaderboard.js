@@ -6,8 +6,7 @@ if (Meteor.isClient) {
   var selectedPlayer = new ReactiveVar('');
   Template.LeaderBoard.helpers({
     players:function(){
-      var currentUserId = Meteor.userId();
-      return PlayersList.find({userId:currentUserId},{sort:{score:-1,name:1}});
+      return PlayersList.find({},{sort:{score:-1,name:1}});
     },
     selectedPlayer:function(){
       var playerId=this._id;
@@ -15,7 +14,9 @@ if (Meteor.isClient) {
       return playerId === selectedId ? 'selected' : '';
     }
   });
-
+  Template.LeaderBoard.onCreated(function() {  
+    this.subscribe('playerslist');
+  });
   Template.LeaderBoard.events({
     'click .player': function (e,t) {
         var playerId = this._id;
@@ -30,11 +31,10 @@ if (Meteor.isClient) {
       var playerName=t.find('input[type=text]').value;
       var currentUserId = Meteor.userId();
       if(playerName !== ''){
-        PlayersList.insert({
-          name:playerName,
-          score:0,
-          userId:currentUserId,
-          createdAt:new Date
+        Meteor.call('insertPlayerData',playerName, function (error, result) {
+          if(error){
+            console.log(error);
+          }
         });
       }
       t.find('form[name=addPlayer]').reset();
@@ -49,15 +49,27 @@ if (Meteor.isClient) {
   Template.ScoreButtons.events({
     'click .increment': function (e,t) {
       var selectedId = selectedPlayer.get();
-      PlayersList.update({_id:selectedId}, {$inc:{score:5}});
+      Meteor.call('updatePlayerScore', selectedId,5, function (error, result) {
+        if(error){
+          console.log(error);
+        }
+      });
     },
     'click .decrement': function (e,t) {
       var selectedId = selectedPlayer.get();
-      PlayersList.update({_id:selectedId}, {$inc:{score:-5}});
+      Meteor.call('updatePlayerScore', selectedId,-5, function (error, result) {
+        if(error){
+          console.log(error);
+        }
+      });
     },
     'click .delete':function(){
       var selectedId = selectedPlayer.get();
-      PlayersList.remove({_id:selectedId});
+      Meteor.call('removePlayer',selectedId, function (error, result) {
+        if(error){
+          console.log(error);
+        }
+      });
     }
   });
   Template.ScoreButtons.rendered = function () {
@@ -70,6 +82,26 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
+  Meteor.publish('playerslist',function(){
+    return PlayersList.find({userId:this.userId});
+  });
+  Meteor.methods({
+    'insertPlayerData':function(playerName){
+      var currentUserId = Meteor.userId();
+        PlayersList.insert({
+          name:playerName,
+          score:0,
+          userId:currentUserId,
+          createdAt:new Date
+        });
+    },
+    'removePlayer':function(playerId){
+      PlayersList.remove({_id:playerId,userId:Meteor.userId()});
+    },
+    'updatePlayerScore':function(selectedPlayer,scoreValue){
+      PlayersList.update({_id:selectedPlayer,userId:Meteor.userId()}, {$inc:{score:scoreValue}});
+    }
+  })
   Meteor.startup(function () {
     // code to run on server at startup
     // if(PlayersList.find({}).count() === 0){

@@ -76,6 +76,12 @@ span.text-orange{
 	    overflow-y: auto;
 }
 
+.loading{
+  position: relative;
+  height: 100px;
+  width: 100%;
+}
+
 @media screen and (max-width:720px){
 	body{
 		padding: 0;
@@ -106,7 +112,7 @@ span.text-orange{
 		padding: 20px;
 	}
 	h1{
-		font-size: 14px;
+		font-size: 18px;
 		margin: 0;
 	}
 	h5{
