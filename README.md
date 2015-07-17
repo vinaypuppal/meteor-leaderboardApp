@@ -7,8 +7,11 @@
 - You can increment a selected player’s score.
 - You can increment a selected player’s score.
 
-###ScreenShots:-(Dummy Image)
-![alt tag](http://www.lorempixel.com/100/200)
+###ScreenShots:-
+######On Desktop Browser:
+![alt tag](https://raw.githubusercontent.com/vinaypuppal/meteor-leaderboardApp/master/ScreenShots/leaderboadAppScreenShot.jpg)
+######On Mobile Browser:
+![alt tag](https://raw.githubusercontent.com/vinaypuppal/meteor-leaderboardApp/master/ScreenShots/m-leaderboardAppScreenShot.jpg)
 
 ###Demo:-
 https://leaderboard.vinaypuppal.com
