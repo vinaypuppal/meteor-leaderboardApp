@@ -21,7 +21,7 @@
 ######SignIn Page:
 ![alt tag](https://raw.githubusercontent.com/vinaypuppal/meteor-leaderboardApp/leaderboards/ScreenShots/m-leaderboards-signin.png)
 ######SignIn Dropdown:
-![alt tag](https://raw.githubusercontent.com/vinaypuppal/meteor-leaderboardApp/leaderboards/ScreenShots/m-leaderboards-sigin-dropdown.png)
+![alt tag](https://raw.githubusercontent.com/vinaypuppal/meteor-leaderboardApp/leaderboards/ScreenShots/m-leaderboards-signin-dropdown.png)
 ######Leaderboards Page:
 ![alt tag](https://raw.githubusercontent.com/vinaypuppal/meteor-leaderboardApp/leaderboards/ScreenShots/m-leaderboards.png)
 
